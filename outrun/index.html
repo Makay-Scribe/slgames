@@ -48,3 +48,53 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Game</title>
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: none; /* Hidden by default */
+            z-index: 1; /* Sit on top of the page content */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Embedded Game</h1>
+    <iframe id="gameFrame" src="https://funhtml5games.com?embed=outrun" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
+
+    <!-- Overlay element -->
+    <div id="overlay"></div>
+
+    <script>
+        window.onload = function() {
+            var iframe = document.getElementById('gameFrame');
+            iframe.onload = function() {
+                var iframeWindow = iframe.contentWindow;
+                try {
+                    // Attempt to mute the audio elements within the iframe
+                    var audioElements = iframeWindow.document.getElementsByTagName('audio');
+                    for (var i = 0; i < audioElements.length; i++) {
+                        audioElements[i].muted = true;
+                    }
+                    // Attempt to mute video elements as well
+                    var videoElements = iframeWindow.document.getElementsByTagName('video');
+                    for (var j = 0; j < videoElements.length; j++) {
+                        videoElements[j].muted = true;
+                    }
+                } catch (e) {
+                    console.log('Unable to access iframe content: ', e);
+                }
+            };
+        };
+    </script>
+</body>
+</html>
