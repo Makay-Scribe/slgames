@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Game</title>
     <style>
-        /* Style for the overlay */
-        #overlay {
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -20,24 +19,27 @@
 </head>
 <body>
     <h1>Welcome to the Embedded Game</h1>
-    <iframe src="https://funhtml5games.com?embed=outrun" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
+    <iframe id="gameFrame" src="https://funhtml5games.com?embed=outrun" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
 
     <!-- Overlay element -->
     <div id="overlay"></div>
 
     <script>
-        // Function to show the overlay
-        function showOverlay() {
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        // Function to hide the overlay
-        function hideOverlay() {
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        // Example usage: Show the overlay after 3 seconds
-        setTimeout(showOverlay, 3000);
+        window.onload = function() {
+            var iframe = document.getElementById('gameFrame');
+            iframe.onload = function() {
+                var iframeWindow = iframe.contentWindow;
+                try {
+                    // Attempt to mute the audio elements within the iframe
+                    var audioElements = iframeWindow.document.getElementsByTagName('audio');
+                    for (var i = 0; i < audioElements.length; i++) {
+                        audioElements[i].muted = true;
+                    }
+                } catch (e) {
+                    console.log('Unable to access iframe content: ', e);
+                }
+            };
+        };
     </script>
 </body>
 </html>
