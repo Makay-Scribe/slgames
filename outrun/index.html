@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Game</title>
-    <script>
-        window.onload = function() {
-            var iframe = document.querySelector('iframe');
-            // Attempt to mute the iframe content
-            iframe.contentWindow.postMessage('mute', '*');
-        };
-    </script>
+    <style>
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to the Embedded Game</h1>
     <iframe src="https://makay-scribe.github.io/slgames/outrun/" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
+    <div class="overlay">
+        <p>Game is muted for a better experience.</p>
+    </div>
 </body>
 </html>
