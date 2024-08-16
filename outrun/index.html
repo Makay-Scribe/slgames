@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Game</title>
+    <script>
+        window.onload = function() {
+            var iframe = document.querySelector('iframe');
+            // Check if the iframe content supports muting
+            iframe.contentWindow.postMessage('mute', '*');
+        };
+    </script>
 </head>
 <body>
     <h1>Welcome to the Embedded Game</h1>
