@@ -7,13 +7,13 @@
     <script>
         window.onload = function() {
             var iframe = document.querySelector('iframe');
-            // Check if the iframe content supports muting
+            // Attempt to mute the iframe content
             iframe.contentWindow.postMessage('mute', '*');
         };
     </script>
 </head>
 <body>
     <h1>Welcome to the Embedded Game</h1>
-    <iframe src="https://funhtml5games.com?embed=outrun" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
+    <iframe src="https://makay-scribe.github.io/slgames/outrun/" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
 </body>
 </html>
