@@ -5,27 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Game</title>
     <style>
-        .overlay {
-            position: absolute;
+        /* Style for the overlay */
+        #overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 24px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: none; /* Hidden by default */
+            z-index: 1; /* Sit on top of the page content */
         }
     </style>
 </head>
 <body>
     <h1>Welcome to the Embedded Game</h1>
-    <iframe src="https://makay-scribe.github.io/slgames/outrun/" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
-    <div class="overlay">
-        <p>Game is muted for a better experience.</p>
-    </div>
+    <iframe src="https://funhtml5games.com?embed=outrun" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
+
+    <!-- Overlay element -->
+    <div id="overlay"></div>
+
+    <script>
+        // Function to show the overlay
+        function showOverlay() {
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // Function to hide the overlay
+        function hideOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Example usage: Show the overlay after 3 seconds
+        setTimeout(showOverlay, 3000);
+    </script>
 </body>
 </html>
