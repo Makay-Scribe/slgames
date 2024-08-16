@@ -19,7 +19,7 @@
 </head>
 <body>
     <h1>Welcome to the Embedded Game</h1>
-    <iframe id="gameFrame" src="https://funhtml5games.com?embed=outrun" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
+    <iframe id="gameFrame" src="https://funhtml5games.com?embed=outrun" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
 
     <!-- Overlay element -->
     <div id="overlay"></div>
@@ -34,6 +34,11 @@
                     var audioElements = iframeWindow.document.getElementsByTagName('audio');
                     for (var i = 0; i < audioElements.length; i++) {
                         audioElements[i].muted = true;
+                    }
+                    // Attempt to mute video elements as well
+                    var videoElements = iframeWindow.document.getElementsByTagName('video');
+                    for (var j = 0; j < videoElements.length; j++) {
+                        videoElements[j].muted = true;
                     }
                 } catch (e) {
                     console.log('Unable to access iframe content: ', e);
